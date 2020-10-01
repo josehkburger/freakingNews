@@ -1,7 +1,8 @@
 class Post {
-    constructor(nome, post, postKey) {
+    constructor(nome, post, image, postKey) {
         this._nome = nome;
         this._post = post;
+        this._image = image;
         this._key = postKey;
     }
 
@@ -11,6 +12,10 @@ class Post {
 
     get post() {
         return this._post;
+    }
+
+    get image() {
+        return this._image;
     }
     
     set post(postText) {
@@ -30,6 +35,7 @@ class Post {
 
 var itNome = document.getElementById("itNome");
 var taPost = document.getElementById("taPost");
+var postImage = document.getElementById("postImage");
 var selRegisteredPosts = document.getElementById("selRegisteredPosts");
 var idx = 0;
 var arrPosts = [];
@@ -141,7 +147,7 @@ function savePost() {
 
 function addPostToLocalStorage() {
     var postKey = `${idx}-${itNome.value}`;
-    post = new Post(itNome.value, taPost.value, postKey);
+    post = new Post(itNome.value, taPost.value, postImage.value, postKey);
     arrPosts.push(post);
     addPostToSelectionList(post.key);
     idx++;
